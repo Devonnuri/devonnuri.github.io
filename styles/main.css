@@ -1,0 +1,144 @@
+@import 'fonts.css';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+}
+
+header {
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+section {
+  min-height: 100vh;
+}
+
+#logo {
+  margin: 3rem 0;
+  width: 50rem;
+}
+
+#logo .cls-1,
+#logo .cls-3 {
+  fill: white;
+}
+
+#logo .cls-2 {
+  isolation: isolate;
+}
+
+#logo .cls-3 {
+  fill-rule: evenodd;
+}
+
+#logo #devonnuri path {
+  opacity: 0;
+}
+
+#logo #Eye_1 {
+  transform: translateY(100px);
+}
+
+#logo #Eye_2 {
+  transform: translateY(100px);
+}
+
+#logo #Brush {
+  transform: translateY(-100px);
+}
+
+.scrollDown {
+  padding-top: 45vh;
+  color: white;
+  text-transform: uppercase;
+}
+
+.brief-info {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+.brief-info .container {
+  padding: 0px 25rem;
+}
+
+.brief-info .header {
+  display: inline-block;
+  text-align: left;
+  font-size: 3em;
+  padding-top: 15vh;
+  font-family: 'Pier Sans', sans-serif;
+  font-weight: 900;
+}
+
+.brief-info .header h1 div {
+  display: inline;
+  color: #2ecc71;
+  background-image: linear-gradient(120deg, #2af598 0%, #009efd 100%);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.brief-info .description {
+  display: inline-block;
+  margin-top: 4rem;
+  text-align: left;
+  font-family: 'Noto Sans Korean';
+  font-size: 2em;
+}
+
+.brief-info .buttons {
+  margin-top: 7vh;
+}
+
+.brief-info .buttons .button {
+  text-decoration: none;
+  color: white;
+  padding: 15px;
+  font-size: 1.5em;
+  font-family: 'Roboto';
+  border-radius: 15px;
+}
+
+.brief-info .buttons .button#resume {
+  background-image: linear-gradient(135deg, #f761a1 10%, #8c1bab 100%);
+  box-shadow: 1px 1px 7px 3px #bbbbbb;
+}
+
+.project-info {
+  background-image: linear-gradient(135deg, #f97794 10%, #623aa2 100%);
+  color: white;
+  text-align: center;
+}
+
+.project-info h2 {
+  font-size: 3em;
+  padding-top: 15vh;
+}
+
+@media screen and (max-device-width: 700px) {
+  #logo {
+    width: 80vw;
+  }
+
+  .brief-info .container {
+    padding: 0px 1rem;
+  }
+
+  .brief-info .header {
+    font-size: 7vw;
+  }
+
+  .brief-info .description {
+    font-size: 6vw;
+  }
+}

@@ -1,58 +1,33 @@
-// Wrap every letter in a span
-$('.logo .letters').each(function() {
-  $(this).html(
-    $(this)
-      .text()
-      .replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>")
-  );
-});
-
-$('.title p').each(function() {
-  $(this).html(
-    $(this)
-      .text()
-      .replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>")
-  );
-});
-
 anime
   .timeline()
   .add({
-    targets: '.logo .letter',
-    scale: [0.3, 1],
+    targets: '#logo #devonnuri path',
     opacity: [0, 1],
-    translateZ: 0,
     easing: 'easeOutExpo',
-    duration: 600,
+    duration: 300,
+    offset: 200,
     delay: function(el, i) {
       return 70 * (i + 1);
     }
   })
   .add({
-    targets: '.logo .line',
-    scaleX: [0, 1],
-    opacity: [0.5, 1],
+    targets: '#logo #Eye_1',
+    translateY: [100, 0],
     easing: 'easeOutExpo',
-    duration: 700,
-    offset: '-=875',
-    delay: function(el, i, l) {
-      return 80 * (l - i);
-    }
+    duration: 800,
+    offset: 600
+  })
+  .add({
+    targets: '#logo #Eye_2',
+    translateY: [100, 0],
+    easing: 'easeOutExpo',
+    duration: 800,
+    offset: 800
+  })
+  .add({
+    targets: '#logo #Brush',
+    translateY: [-100, 0],
+    easing: 'easeOutExpo',
+    duration: 500,
+    offset: 1000
   });
-
-anime.timeline().add({
-  targets: '.title .letter',
-  opacity: [0, 1],
-  easing: 'easeInOutQuad',
-  duration: 400,
-  delay: function(el, i) {
-    return 30 * (i + 1);
-  }
-});
-
-anime.timeline().add({
-  targets: '.scrollDown',
-  opacity: [0, 1],
-  easing: 'easeInOutQuad',
-  delay: 500
-});
