@@ -11,10 +11,13 @@ body {
 }
 
 header {
-  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(120deg, #0652dd 0%, #1b1464 100%);
   min-height: 100vh;
-  text-align: center;
   overflow-x: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 section {
@@ -22,12 +25,7 @@ section {
 }
 
 #logo {
-  margin: 3rem 0;
   width: 50rem;
-}
-
-#logo .cls-1,
-#logo .cls-3 {
   fill: white;
 }
 
@@ -53,12 +51,6 @@ section {
 
 #logo #Brush {
   transform: translateY(-100px);
-}
-
-.scrollDown {
-  padding-top: 45vh;
-  color: white;
-  text-transform: uppercase;
 }
 
 .brief-info {
@@ -127,6 +119,7 @@ section {
 
 @media screen and (max-device-width: 700px) {
   #logo {
+    margin: 5rem 0;
     width: 80vw;
   }
 
