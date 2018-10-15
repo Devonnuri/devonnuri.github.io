@@ -1,6 +1,13 @@
 anime
   .timeline()
   .add({
+    targets: '#logo',
+    scale: [0, 1],
+    easing: 'easeOutExpo',
+    duration: 400,
+    offset: 200
+  })
+  .add({
     targets: '#logo #devonnuri path',
     opacity: [0, 1],
     easing: 'easeOutExpo',
