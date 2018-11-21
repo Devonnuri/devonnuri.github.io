@@ -7,14 +7,6 @@
 }
 
 @font-face {
-  font-family: 'Arciform';
-  src: url('../fonts/Arciform.woff2') format('woff2'),
-    url('../fonts/Arciform.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: 'Noto Sans Korean';
   font-style: normal;
   font-weight: 100;

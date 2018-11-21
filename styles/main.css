@@ -53,41 +53,49 @@ section {
   transform: translateY(-100px);
 }
 
-.project-info {
-  max-height: 100vh;
-  padding: 5rem 25rem;
-
-  background-color: #eee;
-  font-family: 'Roboto Mono', monospace;
-}
-
-.project-info h2 {
-  font-size: 3em;
-}
-
-.project-info ul {
-  padding-top: 4rem;
-
-  font-size: 1.5em;
-
-  list-style: none;
-}
-
-.project-info li {
-  padding: 0.5rem 0;
-}
-
-.project-info li::before {
-  content: '> ';
-  color: #555;
-}
-
 .brief-info {
+  max-height: 100vh;
+  padding: 0;
+
+  background: url('../images/cup-of-coffee.jpg') fixed;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+
+  color: white;
+  font-family: 'Roboto';
+  text-align: center;
+}
+
+.brief-info h1 {
+  padding-top: 5rem;
+  font-size: 8em;
+  font-family: 'Pier Sans';
+}
+
+.brief-info .timeline {
+  padding-top: 7rem;
+  height: 100vh;
+  display: flex;
+
+  flex-direction: row;
+}
+
+.brief-info .timeline .timeline-item {
+  width: 20rem;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.brief-info .timeline .timeline-item h3 {
+  font-size: 1.7em;
+  padding: 1rem 0;
+}
+
+.contact {
   font-family: 'Roboto', sans-serif;
   text-align: center;
 }
 
-.brief-info .header {
+.contact .header {
   display: inline-block;
   text-align: left;
   font-size: 3em;
@@ -96,7 +104,7 @@ section {
   font-weight: 900;
 }
 
-.brief-info .header h1 div {
+.contact .header h1 span {
   display: inline;
   color: #2ecc71;
   background-image: linear-gradient(120deg, #2af598 0%, #009efd 100%);
@@ -105,7 +113,7 @@ section {
   background-clip: text;
 }
 
-.brief-info .description {
+.contact .description {
   display: inline-block;
   margin-top: 4rem;
   text-align: left;
@@ -113,11 +121,11 @@ section {
   font-size: 2em;
 }
 
-.brief-info .buttons {
+.contact .buttons {
   margin-top: 7vh;
 }
 
-.brief-info .buttons .button {
+.contact .buttons .button {
   padding: 1rem 5rem;
   outline: none;
   border: none;
@@ -129,13 +137,13 @@ section {
   text-decoration: none;
 }
 
-.brief-info .buttons .button#resume {
+.contact .buttons .button#resume {
   background-color: #0652dd;
   box-shadow: 1px 1px 7px 3px #bbbbbb;
 }
 
 @media screen and (max-width: 1200px) {
-  .project-info {
+  .brief-info {
     padding: 5rem 10rem;
   }
 }
@@ -146,15 +154,15 @@ section {
     width: 80vw;
   }
 
-  .project-info {
+  .brief-info {
     padding: 5rem 5rem;
   }
 
-  .brief-info .header {
+  .contact .header {
     font-size: 7vw;
   }
 
-  .brief-info .description {
+  .contact .description {
     font-size: 6vw;
   }
 }
