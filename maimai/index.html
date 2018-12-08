@@ -34,13 +34,30 @@
                 }
 
                 for (var i=0; i<stores.length; i++) {
-                    var coord = { lat: Number(stores[i].coord[0]), lng: Number(stores[i].coord[1]) };
+                    var store = stores[i];
 
-                    new google.maps.Marker({
+                    var contentString = '<div id="content">'+
+                        '<h1 id="firstHeading" class="firstHeading">' + store.name + '</h1>'+
+                        '<div id="bodyContent">'+
+                        '<p>' + store.address + '</p>'+
+                        '</div>'+
+                        '</div>';
+
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
+
+                    var coord = new google.maps.LatLng(Number(store.coord[0]), Number(store.coord[1]));
+
+                    var marker = new google.maps.Marker({
                         position: coord,
                         map: map,
-                        title: stores[i].name
+                        title: store.name
                     });
+                    
+                    marker.addListener('click', function() {
+                        infowindow.open(map, marker);
+                    })
                 }
             }
         </script>
