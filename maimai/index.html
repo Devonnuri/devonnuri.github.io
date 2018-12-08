@@ -26,6 +26,8 @@
                     zoom: 15
                 });
 
+                var geocoder = new google.maps.Geocoder();
+
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function (position) {
                         initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -47,17 +49,34 @@
                         content: contentString
                     });
 
-                    var coord = new google.maps.LatLng(Number(store.coord[0]), Number(store.coord[1]));
 
-                    var marker = new google.maps.Marker({
-                        position: coord,
-                        map: map,
-                        title: store.name
-                    });
-                    
-                    marker.addListener('click', function() {
-                        infowindow.open(map, marker);
-                    })
+                    if (!store.coord.length < 1) {
+                        geocoder.geocode( { 'address': store.address }, function(results, status) {
+                            if (status == 'OK') {
+                                var marker = new google.maps.Marker({
+                                    position: results[0].geometry.location,
+                                    map: map,
+                                    title: store.name
+                                });
+                                
+                                marker.addListener('click', function() {
+                                    infowindow.open(map, marker);
+                                });
+                            }
+                        });
+                    } else {
+                        var coord = new google.maps.LatLng(Number(store.coord[0]), Number(store.coord[1]));
+
+                        var marker = new google.maps.Marker({
+                            position: coord,
+                            map: map,
+                            title: store.name
+                        });
+                        
+                        marker.addListener('click', function() {
+                            infowindow.open(map, marker);
+                        });
+                    }
                 }
             }
         </script>
