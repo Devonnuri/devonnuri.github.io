@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta charset="utf-8">
+        <title>Where is maimai?</title>
+        <style>
+            #map {
+                height: 100%;
+            }
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="map"></div>
+        <script src="stores.js"></script>
+        <script>
+            function initMap() {
+                var stores = JSON.parse(jsonStores);
+                
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 4
+                });
+
+                for(var i=0; i<stores.length; i++) {
+                    new google.maps.Marker({
+                        position: stores[i].coord,
+                        map: map,
+                        title: stores[i].name
+                    });
+                }
+            }
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkv7q8hhwGaaTMgLEkJan3pV_rEKcqVuw&callback=initMap"></script>
+    </body>
+</html>
