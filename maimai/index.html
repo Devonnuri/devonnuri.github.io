@@ -27,7 +27,7 @@
 
                 for(var i=0; i<stores.length; i++) {
                     new google.maps.Marker({
-                        position: stores[i].coord,
+                        position: {lat: stores[i].coord[0], lng: stores[i].coord[1]},
                         map: map,
                         title: stores[i].name
                     });
