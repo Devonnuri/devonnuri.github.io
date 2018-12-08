@@ -3,6 +3,9 @@
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
         <meta charset="utf-8">
         <title>Where is maimai?</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin=""/>
         <style>
             #map {
                 height: 100%;
@@ -17,69 +20,27 @@
     <body>
         <div id="map"></div>
         <script src="stores.js"></script>
+        <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+            integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+            crossorigin=""></script>
         <script>
-            function initMap() {
-                var stores = JSON.parse(jsonStores);
-                
-                var map = new google.maps.Map(document.getElementById('map'), {
-                    center: { lat: Number(stores[0].coord[0]), lng: Number(stores[0].coord[1]) },
-                    zoom: 15
+            var stores = JSON.parse(jsonStores);
+            var map = L.map('map').setView(stores[0].coord, 15);
+            
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    map.setView(L.latLng(position.coords.latitude, position.coords.longitude), 15);
                 });
+            }
 
-                var geocoder = new google.maps.Geocoder();
-
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function (position) {
-                        initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                        map.setCenter(initialLocation);
-                    });
-                }
-
-                for (var i=0; i<stores.length; i++) {
-                    var store = stores[i];
-
-                    var contentString = '<div id="content">'+
-                        '<h1 id="firstHeading" class="firstHeading">' + store.name + '</h1>'+
-                        '<div id="bodyContent">'+
-                        '<p>' + store.address + '</p>'+
-                        '</div>'+
-                        '</div>';
-
-                    var infowindow = new google.maps.InfoWindow({
-                        content: contentString
-                    });
-
-
-                    if (!store.coord.length < 1) {
-                        geocoder.geocode( { 'address': store.address }, function(results, status) {
-                            if (status == 'OK') {
-                                var marker = new google.maps.Marker({
-                                    position: results[0].geometry.location,
-                                    map: map,
-                                    title: store.name
-                                });
-                                
-                                marker.addListener('click', function() {
-                                    infowindow.open(map, marker);
-                                });
-                            }
-                        });
-                    } else {
-                        var coord = new google.maps.LatLng(Number(store.coord[0]), Number(store.coord[1]));
-
-                        var marker = new google.maps.Marker({
-                            position: coord,
-                            map: map,
-                            title: store.name
-                        });
-                        
-                        marker.addListener('click', function() {
-                            infowindow.open(map, marker);
-                        });
-                    }
+            for (var i=0; i<stores.length; i++) {
+                var store = stores[i];
+                
+                if (store.coord) {
+                    var marker = L.marker(L.latLng(store.coord)).addTo(map);
+                    marker.bindPopup("<b>"+store.name+"</b><br>"+store.address).openPopup();
                 }
             }
         </script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkv7q8hhwGaaTMgLEkJan3pV_rEKcqVuw&callback=initMap"></script>
     </body>
 </html>
