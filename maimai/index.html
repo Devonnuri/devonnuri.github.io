@@ -22,8 +22,16 @@
                 var stores = JSON.parse(jsonStores);
                 
                 var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 4
+                    center: { lat: Number(stores[0].coord[0]), lng: Number(stores[0].coord[1]) },
+                    zoom: 15
                 });
+
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                        map.setCenter(initialLocation);
+                    });
+                }
 
                 for (var i=0; i<stores.length; i++) {
                     var coord = { lat: Number(stores[i].coord[0]), lng: Number(stores[i].coord[1]) };
