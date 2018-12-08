@@ -25,9 +25,11 @@
                     zoom: 4
                 });
 
-                for(var i=0; i<stores.length; i++) {
+                for (var i=0; i<stores.length; i++) {
+                    var coord = { lat: Number(stores[i].coord[0]), lng: Number(stores[i].coord[1]) };
+
                     new google.maps.Marker({
-                        position: {lat: stores[i].coord[0], lng: stores[i].coord[1]},
+                        position: coord,
                         map: map,
                         title: stores[i].name
                     });
