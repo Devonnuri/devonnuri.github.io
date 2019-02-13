@@ -54,40 +54,7 @@ section {
 }
 
 .brief-info {
-  max-height: 100vh;
-  padding: 0;
-
-  background: url('../images/cup-of-coffee.jpg') fixed;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
-
-  color: white;
-  font-family: 'Roboto';
-  text-align: center;
-}
-
-.brief-info h1 {
-  padding-top: 5rem;
-  font-size: 8em;
-  font-family: 'Pier Sans';
-}
-
-.brief-info .timeline {
-  padding-top: 7rem;
-  height: 100vh;
-  display: flex;
-
-  flex-direction: row;
-}
-
-.brief-info .timeline .timeline-item {
-  width: 20rem;
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.brief-info .timeline .timeline-item h3 {
-  font-size: 1.7em;
-  padding: 1rem 0;
+  min-height: 100vh;
 }
 
 .contact {
